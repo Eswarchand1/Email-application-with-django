@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>profile</title>
+      <style>
+
+.contactbar {
+  overflow: hidden;
+  background-color: skyblue;
+
+}
+
+.contactbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.contactbar a:hover, .dropdown:hover .dropbtn {
+  background-color: red;
+}
+
+.contact-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.contact-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.contact-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .contact-content {
+  display: block;
+}
+        input[type="text"]
+        {
+            width: 30%;
+            height:30px;
+            border-radius: 5px;
+        }
+        input[type="submit"]
+        {
+            width: 30%;
+            height:30px;
+            border-radius: 5px;
+        }
+        input[type="date"]
+        {
+            width: 30%;
+            height:30px;
+            border-radius: 5px;
+        }
+        input[type="password"]
+        {
+            width: 30%;
+            height:30px;
+            border-radius: 5px;
+        }
+         input[type="file"]
+        {
+            width: 30%;
+            height:30px;
+            border-radius: 5px;
+        }
+        body{
+            background-color: #e4fbff;
+        }
+    </style>
+</head>
+<body>
+
+<div class="contactbar">
+  <a href="{% url 'email:home' %}">Home</a>
+  <a href="{% url 'email:displaycontacts' %}">Address</a>
+  <div class="dropdown">
+    <button class="dropbtn">Contacts
+
+    </button>
+    <div class="contact-content">
+      <a href="{% url 'email:addcontacts' %}">Add contact</a>
+      <a href="{% url 'email:deletecontacts' %}">Delete contact</a>
+      <a href="{% url 'email:updatecontacts' %}">Update contact</a>
+        <a href="{% url 'email:displaycontacts' %}">Contacts address</a>
+    </div>
+  </div>
+</div>
+<form action="updateprofile" method="post" enctype="multipart/form-data">
+     {% csrf_token %}
+
+    {% for items in obj %}
+
+        <div style="margin-left: 46%; margin-right: 0%; margin-top: 0%; position: absolute; font-size: 90px; ">
+        <input type="file" accept="image/*" value="{{items.choosefile.url}}" id="choosefile" name="choosefile" style="display: none;" onchange="PreviewImage()" />
+        <label for="choosefile" style="margin-top: 3%; font: size 200px; color: transparent;"  >+</label>
+
+    </div>
+    <div style="margin-left: 45%; margin-right: 45%;">
+        <img id="uploadPreview" src="{{items.choosefile.url}}" style="width: 100px; height: 100px; border-radius: 50px; background-color: skyblue; " />
+    </div>
+
+    <div style="align-text:center; margin-left: 40%; margin-top: 3%;">
+        <input type="text" placeholder="Enter name" value="{{ items.pname }}" name="pname" required/> <br/><br/>
+        <input type="text" placeholder="Enter email address" value="{{ items.pmail }}" name="pmail" /> <br/><br/>
+        <input type="date" placeholder="data of birth" value="{{ items.pdate }}" name="pdate" /> <br/><br/>
+        <input type="text" placeholder="Enter country" value="{{ items.pcountry }}" name="pcountry" /> <br/><br/>
+        <input type="text" placeholder="Enter address" value="{{ items.paddress }}" name="paddress" /> <br/><br/>
+        <input type="text" placeholder="Enter mobile number" value="{{ items.pnumber }}" name="pnumber" /> <br/><br/>
+        <input type="text" placeholder="Enter profession" value="{{ items.pprofession }}" name="pprofession" /> <br/><br/>
+        <input type="password" placeholder="Password" value="{{ items.ppass }}" name="ppass" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Password must contain at least one uppercase and one number and lowercase letter, and minimum 8 or more characters" /> <br/><br/>
+        <input type="password" placeholder="reenter password" value="{{ items.prpass }}" name="prpass" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Password must contain at least one uppercase and one number and lowercase letter, and minimum 8 or more characters"  /> <br/><br/>
+        <input type="file" accept="image/*" value="{{items.choosefile}}" id="idcard" name="pid"  /> <br>
+
+        <input type="submit" value="Update profile" />
+    </div>
+       {% endfor %}
+
+
+
+        </form>
+
+
+<script type="text/javascript">
+
+    function PreviewImage() {
+        var reader = new FileReader();
+        reader.readAsDataURL(document.getElementById("choosefile").files[0]);
+
+        reader.onload = function (oFREvent) {
+            document.getElementById("uploadPreview").src = oFREvent.target.result;
+        };
+    };
+
+</script>
+
+</body>
+</html>

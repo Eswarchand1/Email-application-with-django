@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+        background-color: #e4fbff;
+        }
+        .container{
+        border: 5px;
+        font-size:20px;
+        }
+          .contactbar {
+  overflow: hidden;
+  background-color: skyblue;
+
+}
+
+.contactbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.contactbar a:hover, .dropdown:hover .dropbtn {
+  background-color: red;
+}
+
+.contact-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.contact-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.contact-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .contact-content {
+  display: block;
+}
+         .displayMsg{
+             background-color: skyblue;
+             border: 10px;
+             diplay:
+             border-color: black;
+             border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+<div class="contactbar">
+  <a href="{% url 'email:home' %}">Home</a>
+  <a href="{% url 'email:displaycontacts' %}">Address</a>
+  <div class="dropdown">
+    <button class="dropbtn">Contacts
+
+    </button>
+    <div class="contact-content">
+      <a href="{% url 'email:addcontacts' %}">Add contact</a>
+      <a href="{% url 'email:deletecontacts' %}">Delete contact</a>
+      <a href="{% url 'email:updatecontacts' %}">Update contact</a>
+        <a href="{% url 'email:displaycontacts' %}">Contacts address</a>
+    </div>
+  </div>
+</div>
+
+    <label style="text-align:center;width:100%; background-color: skyblue; font-size:35px; padding-left:47%; padding-right:47%;">Profile</label>
+<form method="post" style="margin-left:40%; margin-right:40%">
+    {% csrf_token %}
+
+
+{% for items in obj %}
+<br>
+    <div style="margin-left:25%;">
+        {% if items.choosefile %}
+    <img src="{{items.choosefile.url}}" alt=""  width="150" style="border-radius:50px;">
+
+        {% endif %}<br> <br></div>
+        <div class="container" style="border: 5px; background-color: #c9f7ff;"><label style="border: 5px; background-color: #c9f7ff;" >Username&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:  </label>
+        {{ items.pname }} <br/> <br/>  <hr>
+        <div style="border: 5px; background-color: #c9f7ff;"><label style="border: 5px; background-color: #c9f7ff;" >Email&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:  </label>
+    {{ items.pmail }} <br/> <br/>   <hr>
+        <div style="border: 5px; background-color: #c9f7ff;"><label style="border: 5px; background-color: #c9f7ff;" >DOB&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:  </label>
+    {{ items.pdate }} <br/> <br/>   <hr>
+        <div style="border: 5px; background-color: #c9f7ff;"><label style="border: 5px; background-color: #c9f7ff;" >Country&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:  </label>
+    {{ items.pcountry }} <br/> <br/>   <hr>
+        <div style="border: 5px; background-color: #c9f7ff;"><label style="border: 5px; background-color: #c9f7ff;" >Address&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:  </label>
+    {{ items.paddress }} <br/> <br/>   <hr>
+        <div style="border: 5px; background-color: #c9f7ff;"><label style="border: 5px; background-color: #c9f7ff;" >Phone number:  </label>
+    {{ items.pnumber }} <br/> <br/>
+              <hr>
+        <div style="border: 5px; background-color: #c9f7ff;"><label style="border: 5px; background-color: #c9f7ff;" >Profession&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:  </label>
+    {{ items.pprofession }} <br/> <br/>
+
+
+    </div>
+    <hr>
+    {% endfor %}
+
+ <input type="submit" value="Display profile" style="width:100%; height:40px; background-color:skyblue;" /> <br><br>
+</form>
+
+<form method="get" action="updateprofile">
+    <input type="submit" value="Edit profile" style="width:100%; height:40px; background-color:skyblue;" />
+</form>
+
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>get data</title>
+</head>
+<body>
+
+ {% for items in obj %}
+    <div class="container">
+    {{ items.username }} <br/> <br/>
+    {{ items.semail }}
+    </div>
+    <hr>
+    {% endfor %}
+
+</body>
+</html>

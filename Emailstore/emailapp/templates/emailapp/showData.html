@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>data</title>
+</head>
+<style>
+    .container{
+    background-color: brown ;
+
+    }
+</style>
+<body>
+<p>
+    {% for items in obj %}
+    <div class="container">
+    {{ items.sendmail }} <br/> <br/>
+    {{ items.sendsubject }}
+    </div>
+    <hr>
+    {% endfor %}
+
+
+</p>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up</title>
+
+ <style>
+        .signup{
+            align-items: center;
+            text-align: center;
+            margin-top: 15%;
+
+        }
+
+        input[type="email"]
+        {
+            width: 30%;
+            height:30px;
+            border-radius: 5px;
+        }
+        input[type="password"]
+        {
+            width: 30%;
+            height:30px;
+            border-radius: 5px;
+        }
+        input[type="button"]
+        {
+
+        }
+        input[type="text"]
+        {
+            width: 30%;
+            height:30px;
+            border-radius: 5px;
+        }
+        input[type="submit"]
+        {
+            width: 30.5%;
+            height:35px;
+            border-radius: 5px;
+        }
+        input[type="button"]
+        {
+            width: 30.5%;
+            height:35px;
+            border-radius: 5px;
+        }
+        label
+        {
+            width: 30%;
+            height: 5%;
+            padding-left: 12%;
+            padding-right: 12%;
+            text-align: center;
+            border-radius: 5px;
+        }
+        body{
+            background-color: #e4fbff;
+        }
+
+    </style>
+</head>
+
+
+<body>
+    <div class="signup" style="margin-top: 15%;">
+    <form action="/signup" method="post" >
+            {% csrf_token %}
+            <label style="font-size: 30px; background-color: skyblue; ">Register</label><br><br>
+            <input type="text" placeholder="Username" id="username" name="username" style="height:30px;" /> <br><br>
+            <input type="email" placeholder="email" id="semail" name="semail" /> <br><br>
+            <input type="password" placeholder="Passward" id="spass" name="spass"/> <br><br>
+            <input type="password" placeholder="Retype Password" id="srpass" name="srpass" /> <br><br>
+            <input type="submit" value="Sign up" id="signup" name="signup" /> <br><br>
+            <input type="button" value="Login" formmethod="post"  onclick="location.href='{% url 'email:index' %}'" /> <br><br>
+        </div>
+        </form>
+</body>
+</html>

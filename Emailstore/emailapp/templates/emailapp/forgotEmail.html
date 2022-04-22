@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>type email</title>
+      <style>
+        .signup{
+            align-items: center;
+            text-align: center;
+            margin-top: 15%;
+
+        }
+
+        input[type="email"]
+        {
+            width: 30%;
+            height:30px;
+            border-radius: 5px;
+        }
+
+        input[type="submit"]
+        {
+            width: 30%;
+            height:30px;
+            border-radius: 5px;
+        }
+        label
+        {
+            width: 30%;
+            height: 5%;
+            padding-left: 10.5%;
+            padding-right: 10.5%;
+            text-align: center;
+            border-radius: 5px;
+        }
+        body{
+            background-color: #e4fbff;
+        }
+
+    </style>
+</head>
+<body>
+<div class="signup">
+        <form action="forgotmail" method="get">
+             {% csrf_token %}
+            <label style="font-size: 30px; background-color: skyblue; ">Enter email</label><br><br>
+            <input type="email" name="frmail" placeholder="Email"/> <br><br>
+            <input type="submit" value="submit" onclick="location.href='{% url 'email:forgotpass' %}'" /> <br><br>
+        </div>
+        </form>
+
+</body>
+</html>

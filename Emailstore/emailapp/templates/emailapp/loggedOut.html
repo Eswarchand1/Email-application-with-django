@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Logged out</title>
+    <style>
+        body{
+        background-color: #e4fbff;
+        }
+    </style>
+</head>
+<body>
+<div >
+    <form method="post" action="/" style="font-size:30px;">
+        {% csrf_token %}
+    <p style="background-color:skyblue; text-align:center;"> Successfully logged out!!!!! </p>
+    <input type="submit" value="login" style="width:30%; height:35px; margin-left:35%; background-color:skyblue;" >
+        </form>
+</div>
+
+</body>
+</html>

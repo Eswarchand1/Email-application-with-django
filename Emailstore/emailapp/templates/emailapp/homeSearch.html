@@ -1,0 +1,360 @@
+<html>
+    <title>Home</title>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script>
+            function closePanel()
+            {
+                document.getElementById("mailSidepanel").style.width = "0px";
+                document.getElementById("main").style.marginLeft="0px";
+                document.getElementById("mailInbox").style.marginLeft="0px";
+                document.getElementById("ComposeMsg").style.marginLeft="50%";
+
+
+            }
+            function openPanel()
+            {
+                /*
+                document.getElementById("mailSidepanel").style.width = "250px";
+                document.getElementById("main").style.marginLeft = "250px";
+                */
+                document.getElementById("mailSidepanel").style.width = "250px";
+
+                document.getElementById("mailInbox").style.marginLeft="250px";
+                document.getElementById("ComposeMsg").style.marginLeft="35%";
+
+                /*
+                moving the divsion to 250px
+                so that that space will be occupied by the pannel
+                */
+             }
+             var a=0;
+
+            function openClose()
+            {
+                if(a==1)
+                {
+                    document.getElementById("ComposeMsg").style.display="none";
+                    a=0;
+                }
+                else{
+                    document.getElementById("ComposeMsg").style.display="block";
+                    a=1;
+                }
+
+            }
+
+            function saveData()
+            {
+                var mail,subject,message;
+                mail=document.getElementById("mail id").value;
+                subject=document.getElementById("subject").value;
+                message=document.getElementById("message").value;
+
+
+            }
+
+        </script>
+
+
+    </head>
+    <style >
+
+        .displayMsg{
+             background-color: skyblue;
+
+        }
+         .compose{
+
+            position: absolute;
+            z-index: 1;
+            transition: 0.5s;
+            display: none ;
+
+            margin-left: 50%;
+            margin-top: 20%;
+            margin-right: 5% ;
+            padding-top: 3px;
+            border-radius: 5px;
+            background-color: black;
+        }
+       .sendMsg{
+           position: absolute;
+
+           z-index: 2;
+            margin-left: 50%;
+            margin-right: 5% ;0
+            padding-top: 3px;
+            border-radius: 5px;
+            background-color: black;
+
+        }
+        .mail{
+
+            margin-top:2%;
+            color: black;
+            font-size: 20px;
+            cursor: pointer;
+            padding: none;
+
+        }
+        .mail p{
+            background-color:skyblue;
+            padding: 10px 10px;
+            border-radius: 5px;
+            color:black;
+        }
+        .mail label{
+            margin-top:100%;
+            background-color: skyblue;
+            width: 100%;
+            border: 5px;
+            /*padding-right: auto;
+            */
+
+            color: black;
+            font-size: 20px;
+            cursor: pointer;
+
+
+        }
+        .mail a{
+            color:black;
+            text-decoration: none;
+            width: 100%;
+            border: 5px black;
+
+
+        }
+        .mail input[type="checkbox"]{
+            background-color: skyblue;
+
+
+        }
+        .sidepanel{
+
+            height: 100%;
+            width: 0;
+            margin-top:5%;
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: skyblue ;
+            overflow-x: hidden;
+            transition: 0.5;
+            padding-top: 60px;
+        }
+        .sidepanel button{
+            margin-left: 9%;
+            width: 100%;
+            font-size: 23px;
+            background-color: skyblue;
+            border: none;
+            text-align: left;
+        }
+        .sidepanel button:hover{
+            color: white;
+        }
+
+
+        .sidepanel a{
+
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: black  ;
+            display: block;
+            transition: 0.3;
+        }
+        .sidepanel a:hover{
+            color: white;
+        }
+        .sidepanel input[type="submit"]:hover{
+
+        color:white;
+        }
+
+        .sidepanel .closebutton{
+            position:absolute;
+            cursor: pointer;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+
+        .openbutton{
+            cursor: pointer;
+            font-size: 20px;
+            background-color: skyblue;
+            color: black;
+            padding: 5px 8px;
+            border: none;
+        }
+
+        .openbutton:hover{
+            background-color: grey;
+        }
+
+        .textSearch{
+            width: 600px;
+            height: 38px;
+            font-size: 20px;
+            margin-left:165px;
+            padding: 5px 8px;
+            border: none;
+            border-radius: 9px;
+            background-color: skyblue;
+        }
+        .dropDownButton{
+            cursor:pointer;
+            padding: 5px 8px;
+            border: none;
+            width: 40px;
+            height: 40px;
+            background-color: transparent;
+
+
+
+        }
+        .dropDown{
+            margin-left: 33%;
+            position: absolute;
+            display: inline-block;
+
+        }
+
+        .dropDownContent{
+            display: none;
+            position: absolute;
+            min-width: 160px;
+
+
+            font-size: 16px;
+            box-shadow: 0px 8px 16px 0px rgba(212, 10, 10, 0.2);
+            z-index: 1;
+
+        }
+        .dropDownContent a {
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            background-color: skyblue;
+            color: black;
+
+        }
+
+
+
+        .dropDown:hover .dropDownContent{
+            display: block;
+        }
+        .dropDownContent a:hover{
+            background-color: #e4fbff ;
+        }
+        .inbox{
+            border: 5px;
+            padding: 2px 3px;
+            background-color: skyblue;
+            color: black;
+            border-radius:5px;
+            margin-left: 15%;
+        }
+
+
+
+
+        #main{
+            transition: margin-left 0.5;
+            border:2px;
+        }
+        body{
+            background-color: #e4fbff;
+        }
+        p{
+            color: white;
+        }
+        @media  screen and (max-height:450px) {
+            .sidepanel{ padding-top: 15px;}
+            .sidepanel a{ font-size: 18px; }
+        }
+
+
+
+    </style>
+
+    <body>
+        <!-- .sidepannel this is for the sidebar -->
+        <!-- .sidepannel a ;this is for the inside sidepannel class for <a href> -->
+        <!-- media is used to set rules and change the properties of the body accordingly -->
+
+        <div id="mailSidepanel" class="sidepanel">
+            <a href="javascript:void(0)" class="closebutton" onclick="closePanel()">x</a>
+            <a href="#" onclick="openClose()">compose</a>
+            <a href="{% url 'email:home' %}" methods="get" >inbox</a>
+            <a href="{% url 'email:contacts' %}">contacts</a>
+            <a href="#" >display contacts</a>
+            <a href="{% url 'email:index' %}">logout</a>
+        </div>
+
+        <div id="main">
+
+            <button class="openbutton" onclick="openPanel()">☰ Mail</button>
+            <form method="get" action="homesearch" style="display:inline;">
+
+            <input class="textSearch"   placeholder="Search" name="Hsearch" id="Hsearch" type="text" id="search" />
+            <input type="submit" name="HgetSE"   style="margin-left:0px; width:70px; height:37px; background-color:skyblue; border-radius:5px; " />
+
+            </form>
+            <div class="dropDown">
+                <button  class="dropDownButton"><img src="media/mail1.png" style="margin:none ;" width="35px" height="35px"></button>
+
+                <div class="dropDownContent">
+                    <a href="{% url 'email:profile' %}"  style="border-top-left-radius: 10px; border-top-right-radius: 10px;">profile</a>
+                    <a href="#" >settings</a>
+                    <a href="{% url 'email:index' %}" style="border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; ">logout</a>
+
+                </div>
+                </div>
+
+
+        </div>
+
+
+        <div id="mailInbox" class="mail">
+            <div class="compose" id="ComposeMsg" style="">
+                <form action="home" method="post">
+                    {% csrf_token %}
+                <label style="padding-top: 3px; padding-bottom: 3px; padding-right: 83%; background-color: skyblue; border-radius: 5px;">New Message</label><br><br>
+                <input id="mail id" class="enter" name="sendmail"  placeholder="Recipient" type="email" style="width: 100%; background-color: skyblue;" /><br>
+                <input id="subject" class="enter" name="sendsubject" placeholder="Subject" type="text" style="width: 100%; background-color: skyblue;" />
+                <textarea id="message" name="sendtext" rows="20" cols="90" style=" background-color: skyblue;"></textarea>
+                <input type="submit" name="submit" value="send" style="background-color: skyblue; color: black; margin-left: 92.9%; padding:none;" />
+                </form>
+            </div>
+
+            {% for items in obj %}
+            <div class="displayMsg">
+                <div style="background-color:  #98c1d9;">
+                    <label style="padding-right: 6px; background-color: lightgreen;" >Email &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</label>{{ items.receivemail }} <br/>
+                </div>
+                <label style="padding-right: 5px;background-color: lightgreen;">Subject &nbsp;&nbsp;&nbsp;:</label>{{ items.receivesubject }} <br/>
+                <a href="{% url 'email:index' %}" style="test-decoration:none;">
+                    <label style="background-color: lightgreen;"> Message &nbsp;: </label>{{  items.receivetext  }}
+                </a>
+            </div>
+                  <hr>
+             {% endfor %}
+
+
+        </div>
+
+
+
+
+
+
+
+    </body>
+</html>

@@ -1,0 +1,132 @@
+<html>
+    <title> Email app</title>
+    <head>
+        <script type="text/javascript">
+            function msg()
+            {
+                alert("ÿou are in email app");
+            }
+             function getr() {
+  alert(
+    'This is an alert with basic formatting\n\n'
+    + "\t• list item 1\n"
+    + '\t• list item 2\n'
+    + '\t• list item 3\n\n'
+    + 'Simple table\n\n'
+    + 'Char\t| Result\n'
+    + '\\n\t| line break\n'
+    + '\\t\t| tab space'
+  );
+}
+
+
+function notInDatabase(){
+    var data = JSON.parse("{{obj}}");
+    var mail = document.getElementById("user_name").value;
+     var password = document.getElementById("password").value;
+    var result = document.getElementById("result")
+
+    var flag = 1;
+    for(var x in data){
+    console.log(x.semail);
+      if(mail==x.semail && pasword == x.spass){
+        flag=0;
+      }
+    }
+    if(flag){
+      getr();
+    }
+  }
+        </script>
+    </head>
+
+    <style>
+        body{
+            background-color: #e4fbff ;
+            border: 5px lightblue;
+        }
+        .container{
+            display:flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            width: 100%;
+
+        }
+        input[type="button"]
+        {
+            position:relative;
+            border-radius: 5px;
+            background-color: black;
+            color: skyblue;
+            font-size: 17px;
+            cursor: pointer;
+
+        }
+         input[type="submit"]
+        {
+            position:relative;
+            border-radius: 5px;
+            background-color: black;
+            color: skyblue;
+            font-size: 17px;
+            cursor: pointer;
+
+        }
+        input[type="text"]
+        {
+            border-radius: 5px;
+        }
+        input[type="password"]
+        {
+            border-radius: 5px;
+        }
+
+        .button-wrap{
+            position:relative;
+        }
+        .buttonCustom{
+            display:inline-block;
+            padding: 12px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            background-color: greenyellow;
+            font-size: 12px;
+            font-weight: bold;
+            color: #fff;
+
+        }
+        .logStyle{
+            margin-left: 40%;
+            margin-right: 40%;
+            margin-top: 18%;
+
+        }
+        .login{
+            box-sizing: border-box;
+            border: 5px outset black;
+            padding: 10px;
+            background-color: skyblue;
+            text-align: center;
+        }
+    </style>
+    <body>
+
+        <form action="" method="get">
+            {% csrf_token %}
+            <div class="logStyle">
+            <div class="login">
+            <label for="username">username</label>
+            <input type="email" id="username" name="user_name" required /><br><br>
+            <label for="password" >password</label>
+            <input type="password" id="password" name="password" required /> <br><br>
+            <input type="submit" value="login" id="login" name="login"  /><br>
+            <a href="{% url 'email:forgotmail' %}" style="color: black; ">forgot password?</a> <br>
+            <a href="{% url 'email:signup' %}" style="color: black; ">Not have an account?</a>
+            </div>
+        </div>
+
+        </form>
+
+    </body>
+</html>
+
